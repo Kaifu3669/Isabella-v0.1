@@ -69,6 +69,54 @@ function sendMessage(){
     }
 
   }
+  let lowerMessage =
+message.toLowerCase();
+
+/* SAD */
+
+if(
+  lowerMessage.includes("sad") ||
+  lowerMessage.includes("depressed")
+){
+
+  reply =
+  "I'm sorry you're having a difficult time. I'm here with you.";
+
+}
+
+/* LONELY */
+
+else if(
+  lowerMessage.includes("lonely")
+){
+
+  reply =
+  "Feeling lonely can be heavy. You don't have to face this conversation alone.";
+
+}
+
+/* ANXIOUS */
+
+else if(
+  lowerMessage.includes("anxious") ||
+  lowerMessage.includes("anxiety")
+){
+
+  reply =
+  "It sounds like you're feeling anxious. What part of the situation is worrying you most?";
+
+}
+
+/* HAPPY */
+
+else if(
+  lowerMessage.includes("happy")
+){
+
+  reply =
+  "I'm glad to hear that. What made today better?";
+
+}
 
   setTimeout(()=>{
 
