@@ -5,6 +5,98 @@ localStorage.getItem("memory")
 
 function getReply(message){
 
+/* FAVORITE COLOR */
+
+if(
+msg.startsWith("my favorite color is ")
+){
+
+let color =
+message.substring(21).trim();
+
+memory.favoriteColor = color;
+
+localStorage.setItem(
+"memory",
+JSON.stringify(memory)
+);
+
+return `I'll remember that your favorite color is ${color}.`;
+}
+
+if(
+msg === "what is my favorite color"
+){
+
+if(memory.favoriteColor){
+
+return `Your favorite color is ${memory.favoriteColor}.`;
+
+}
+
+return "You haven't told me your favorite color yet.";
+} 
+
+if(
+msg.startsWith("my hobby is ")
+){
+
+let hobby =
+message.substring(12).trim();
+
+memory.hobby = hobby;
+
+localStorage.setItem(
+"memory",
+JSON.stringify(memory)
+);
+
+return `Got it. I'll remember that your hobby is ${hobby}.`;
+}
+
+if(
+msg === "what is my hobby"
+){
+
+if(memory.hobby){
+
+return `Your hobby is ${memory.hobby}.`;
+
+}
+
+return "You haven't told me your hobby yet.";
+}
+
+if(
+msg.startsWith("my favorite anime is ")
+){
+
+let anime =
+message.substring(21).trim();
+
+memory.favoriteAnime = anime;
+
+localStorage.setItem(
+"memory",
+JSON.stringify(memory)
+);
+
+return `I'll remember that your favorite anime is ${anime}.`;
+}
+
+if(
+msg === "what is my favorite anime"
+){
+
+if(memory.favoriteAnime){
+
+return `Your favorite anime is ${memory.favoriteAnime}.`;
+
+}
+
+return "You haven't told me your favorite anime yet.";
+}   
+
 let msg =
 message.toLowerCase();
 
