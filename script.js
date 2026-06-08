@@ -3,6 +3,11 @@ JSON.parse(
 localStorage.getItem("memory")
 ) || {};
 
+let chatHistory =
+JSON.parse(
+localStorage.getItem("chatHistory")
+) || {};
+
 function getReply(message){
 
 let msg =
@@ -210,7 +215,6 @@ return "Hello. How are you feeling today?";
 /* DEFAULT */
 
 return "I hear you. Tell me more.";
-
 }
 
 function sendMessage(){
@@ -238,6 +242,16 @@ ${message}
 </div>
 `;
 
+chatHistory.push({
+sender:"user",
+text:message
+});
+
+localStorage.setItem(
+"chatHistory",
+JSON.stringify(chatHistory)
+);
+
 input.value = "";
 
 chatBox.scrollTop =
@@ -254,9 +268,55 @@ ${reply}
 </div>
 `;
 
+chatHistory.push({
+sender:"bot",
+text:reply
+});
+
+localStorage.setItem(
+"chatHistory",
+JSON.stringify(chatHistory)
+);
+
 chatBox.scrollTop =
 chatBox.scrollHeight;
 
 },800);
 
 }
+
+window.onload = function(){
+
+let chatBox =
+document.getElementById(
+"chatBox"
+);
+
+chatHistory.forEach(msg=>{
+
+if(
+msg.sender === "user"
+){
+
+chatBox.innerHTML += `
+<div class="userMsg">
+${msg.text}
+</div>
+`;
+
+}else{
+
+chatBox.innerHTML += `
+<div class="botMsg">
+${msg.text}
+</div>
+`;
+
+}
+
+});
+
+chatBox.scrollTop =
+chatBox.scrollHeight;
+
+};
